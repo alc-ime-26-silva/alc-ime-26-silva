@@ -40,6 +40,8 @@ def resolve_lu(A, b):
     A = np.array(A, dtype=float)
     b = np.array(b, dtype=float)
     n = A.shape[0]
+    if b.ndim == 2:  # se b vier como vetor coluna (n x 1), passa para 1D
+        b = np.array([b[i, 0] for i in range(n)])
 
     L = np.eye(n)   # comeca como identidade: diagonal ja vale 1
     U = np.array(A)  # copia de A, que vai virar triangular superior
